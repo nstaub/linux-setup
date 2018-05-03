@@ -32,7 +32,7 @@ esac
 
 source "$RCFILE"
 
-cd "$GIT_PATH/linux-setup"
+cd "$GIT_PATH/linux-setup/appconfig/dotprofiler"
 ./backup_and_deploy.sh
 
 # reload configuration for urxvt

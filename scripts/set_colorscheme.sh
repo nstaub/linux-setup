@@ -33,7 +33,7 @@ notify-send -u low -t 100 "Setting colorscheme to $COLOR_SCHEME" -h string:x-can
 
 source $RCFILE
 
-cd "$GIT_PATH/linux-setup"
+cd "$GIT_PATH/linux-setup/appconfig/dotprofiler"
 ./backup_and_deploy.sh
 
 # reload configuration for urxvt
