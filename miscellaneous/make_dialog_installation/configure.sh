@@ -1,6 +1,7 @@
 #!/bin/bash
 
 OUTFILE="/tmp/dialog_out"
+MAKEFILE_CONFIG="Makefile.config"
 
 rm "$OUTFILE"
 
@@ -9,7 +10,6 @@ dialog \
   --title "CHECKLIST BOX" "$@" \
   --clear \
   --colors \
-  --separate-output \
   --checklist "some text" 30 50 20 \
     "vim" "text editor" on \
     "tmux" "terminal multiplexer" on \
@@ -23,3 +23,11 @@ dialog \
     "zsh" "shell (bash alternative)" off 2> "$OUTFILE" 
 
 BASIC_PACKAGES=$(cat "$OUTFILE")
+
+echo $BASIC_PACKAGES
+
+# create the Makefile.config file
+
+rm $MAKEFILE_CONFIG
+
+echo "packages=$BASIC_PACKAGES" >> $MAKEFILE_CONFIG
