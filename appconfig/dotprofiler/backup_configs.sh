@@ -7,4 +7,4 @@ else
   source ~/."$SNAME"rc
 fi
 
-./submodules/dotprofiler/profiler.sh backup ./appconfig/dotprofiler/file_list.txt
+$GIT_PATH/linux-setup/submodules/dotprofiler/profiler.sh backup $GIT_PATH/linux-setup/appconfig/dotprofiler/file_list.txt
