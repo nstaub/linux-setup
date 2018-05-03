@@ -1,8 +1,8 @@
 myname=tmux
 
-all: build_init dep build install
+all: init dep build install finish
 
-build_init: 
+init: 
 	@echo Installing $(myname)
 
 dep:
@@ -13,3 +13,6 @@ build:
 
 install:
 	@echo $(myname): installing
+
+finish:
+	@echo
