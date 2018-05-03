@@ -5,6 +5,8 @@ MAKEFILE_CONFIG="Makefile.config"
 
 rm "$OUTFILE"
 
+## BASIC COMPONENTS
+
 dialog \
   --backtitle "Select packages to install" \
   --title "CHECKLIST BOX" "$@" \
@@ -21,8 +23,20 @@ dialog \
     "latex" "latex support" off \
     "athame" "vim integration for bash and zsh" off \
     "zsh" "shell (bash alternative)" off 2> "$OUTFILE" 
-
 BASIC_PACKAGES=$(cat "$OUTFILE")
+
+## USE ATHAME?
+
+dialog \
+  --title "Use ATHAME" \
+  --clear "$@" \
+  --colors \
+  --yesno "Do you want to use \ZbATHAME\Zn by default?" 15 61
+if [ "$?" == "0" ]; then
+  USE_ATHAME=1
+else
+  USE_ATHAME=0
+fi
 
 echo $BASIC_PACKAGES
 
@@ -31,3 +45,4 @@ echo $BASIC_PACKAGES
 rm $MAKEFILE_CONFIG
 
 echo "packages=$BASIC_PACKAGES" >> $MAKEFILE_CONFIG
+echo "use_athame=$USE_ATHAME" >> $MAKEFILE_CONFIG
