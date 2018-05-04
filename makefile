@@ -61,10 +61,10 @@ ranger:
 athame: vim
 	$(NESTED_MAKE)
 
-urvxt: i3
+urvxt:
 	$(NESTED_MAKE)
 
-latex:
+latex: vim zathura
 	$(NESTED_MAKE)
 
 finish:
