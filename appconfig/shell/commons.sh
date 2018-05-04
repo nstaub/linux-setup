@@ -101,7 +101,7 @@ getVideoThumbnail () {
 # Other "git" features should not be changed
 git() {
 
-  case $* in pull*|checkout*|"reset --hard")
+  case $* in pull*|checkout*|merge*|"reset --hard")
 
     # give me the path to root of the repo we are in
     ROOT_DIR=`git rev-parse --show-toplevel` 2> /dev/null
@@ -117,10 +117,8 @@ git() {
 
         command git "$@"
 
-        case $* in pull*)
-          echo "Updating git submodules"
-          command git submodule update --init --recursive
-        esac
+        echo "Updating git submodules"
+        command git submodule update --init --recursive
 
         if [[ "$?" == "0" ]]; then
 
@@ -130,18 +128,14 @@ git() {
 
       else
         command git "$@"
-        case $* in pull*)
-          echo "Updating git submodules"
-          command git submodule update --init --recursive
-        esac
+        echo "Updating git submodules"
+        command git submodule update --init --recursive
       fi
 
     else
       command git "$@"
-      case $* in pull*)
-        echo "Updating git submodules"
-        command git submodule update --init --recursive
-      esac
+      echo "Updating git submodules"
+      command git submodule update --init --recursive
     fi
 
     ;;
